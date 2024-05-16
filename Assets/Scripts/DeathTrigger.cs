@@ -6,9 +6,14 @@ public class DeathTrigger : MonoBehaviour
 {
     //public CharacterController cc;
     public GameObject player;
+    public GameObject deathScreen;
     //public Animator animator;
     public bool revivir = false;
 
+    private void Start()
+    {
+        deathScreen.SetActive(false);
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -18,6 +23,7 @@ public class DeathTrigger : MonoBehaviour
             player.SetActive(false);
             Debug.Log("Dying");
             Invoke("Respawn", 2);
+            deathScreen.SetActive(true);
             revivir = false;
 
      
